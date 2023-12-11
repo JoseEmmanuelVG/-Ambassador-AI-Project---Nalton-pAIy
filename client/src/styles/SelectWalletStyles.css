@@ -1,0 +1,127 @@
+.selectWalletContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background: #f3f3f3;
+    position: sticky;
+    top: 0;
+    background-image: url("https://github.com/bancambios/PaiyApp-Hackaton-Etherfuse/blob/main/Images/BackGround%20Select.gif?raw=true");
+    background-size: cover;   
+    background-repeat: no-repeat;  
+    background-position: center;  
+    z-index: 10; 
+    .leftSection .editButton,
+    .leftSection .deleteButton,
+    .centralSection .detailsButton,
+    .centralSection .transactionButton,
+    .centralSection .memoriesButton,
+    .naltonHomeButton {
+        padding: 5px 15px;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+}
+
+.selectWalletContainer.default {
+    background-image: url("https://github.com/bancambios/PaiyApp-Hackaton-Etherfuse/blob/main/Images/BackGround%20Select.gif?raw=true");
+}
+
+.selectWalletContainer.details {
+    background-image: url("https://github.com/bancambios/PaiyApp-Hackaton-Etherfuse/blob/main/Images/BackGround%20Select2.gif?raw=true");
+}
+
+.selectWalletContainer.transactions {
+    background-image: url("https://github.com/bancambios/PaiyApp-Hackaton-Etherfuse/blob/main/Images/BackGround%20Select.gif?raw=true");
+}
+
+.selectWalletContainer.memories {
+    background-image: url("https://github.com/bancambios/PaiyApp-Hackaton-Etherfuse/blob/main/Images/BackGround%20Select3.gif?raw=true");
+}
+
+
+
+
+/* Estilo específico para pantallas pequeñas */
+@media (max-width: 768px) { 
+    .leftSection .editButton,
+    .leftSection .deleteButton,
+    .centralSection .detailsButton,
+    .centralSection .transactionButton,
+    .centralSection .memoriesButton,
+    .naltonHomeButton {
+        padding: 5px 10px; 
+        font-size: 14px; 
+    }
+
+    .selectWalletContainer {
+        flex-direction: column; 
+    }
+
+    .leftSection,
+    .centralSection {
+        width: 100%; 
+        justify-content: space-evenly; 
+    }
+}
+
+
+.leftSection {
+    display: flex;
+    gap: 10px;
+}
+
+.leftSection select {
+    padding: 5px 15px;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.leftSection .editButton {
+    padding: 5px 15px;
+    background: #333;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.leftSection .deleteButton {
+    padding: 5px 15px;
+    background: #d32f2f;
+    color: #fff;
+    border-radius: 5px;
+}
+
+/* Sección central */
+.centralSection {
+    display: flex;
+    gap: 10px;
+}
+
+.centralSection .detailsButton {
+    padding: 5px 15px;
+    background: #1565c0;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.centralSection .transactionButton {
+    padding: 5px 15px;
+    background: #388e3c;
+    color: #fff;
+    border-radius: 5px;
+}
+
+.centralSection .memoriesButton {
+    padding: 5px 15px;
+    background: #8e24aa;
+    color: #fff;
+    border-radius: 5px;
+}
+
+
+.naltonHomeButton {
+    padding: 5px 15px;
+    background: #fbc02d;
+    color: #fff;
+    border-radius: 5px;
+}

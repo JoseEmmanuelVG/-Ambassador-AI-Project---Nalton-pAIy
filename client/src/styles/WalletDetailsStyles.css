@@ -1,0 +1,48 @@
+.wallet-details-container {
+    padding: 20px;
+    font-size: 16px;
+    color: #333;
+    max-height: 100vh;
+    overflow-y: auto;
+    background-image: url("https://github.com/bancambios/PaiyApp-Hackaton-Etherfuse/blob/main/Images/BackGroundDetail2.gif?raw=true");
+    background-size: cover;   
+    background-repeat: no-repeat;  
+    background-position: center;  
+}
+
+.wallet-details-container h1 {
+    font-size: 28px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    color: #007bff;
+    word-wrap: break-word;
+    max-width: 100%;
+}
+
+.wallet-details-container p {
+    margin: 5px 0;
+    word-wrap: break-word;
+}
+
+.transaction-item {
+    border: 1px solid #e0e0e0;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #f8f8f8;
+}
+
+.transaction-item p {
+    margin: 5px 0;
+    font-size: 14px;
+}
+
+.loading-message,
+.error-message {
+    padding: 20px;
+    font-size: 18px;
+}
+
+.error-message {
+    color: #c00;
+}
