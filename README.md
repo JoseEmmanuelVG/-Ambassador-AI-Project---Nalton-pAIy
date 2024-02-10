@@ -36,7 +36,9 @@ We plan to implement wallet connectivity for XRPL and Metamask devnet, as well a
 
 - Use key vault to save the secrets keys
 - Use Azure Cosmos Db to save the images and the same service or another focus to save the accounts if it is necesary
+Azure Cosmos DB for MongoDB: https://learn.microsoft.com/es-mx/training/paths/azure-cosmos-db-api-for-mongodb/
 - Use the Azure open AI services to get a full Azure Cloud connection Apis
+Developing generative artificial intelligence solutions with Azure OpenAI Service: https://learn.microsoft.com/es-mx/training/paths/develop-ai-solutions-azure-openai/
 
 
 
