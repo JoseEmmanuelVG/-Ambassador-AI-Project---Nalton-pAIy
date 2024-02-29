@@ -1,16 +1,27 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
+
 const LocalWalletModal = ({ onClose, mode = "create", currentWallet = {} }) => {
   const [name, setName] = useState(mode === "edit" && currentWallet ? currentWallet.name || '' : '');
   const [address, setAddress] = useState(mode === "edit" && currentWallet ? currentWallet.address || '' : '');
   const [secretKey, setSecretKey] = useState('');
+  const userId = localStorage.getItem('userId'); //get user id from local storage
+  const token = localStorage.getItem('jwtToken'); //get token from local storage
+ 
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-     if (mode === "edit") {
+    const config = {
+        headers: {
+            // include the token in the headers
+            Authorization: `Bearer ${token}`
+        }
+    };
+
+    if (mode === "edit") {
         try {
-            const response = await axios.put(`http://localhost:4000/api/wallet/update_wallet/${currentWallet._id}`, { name, address, secretKey });
+            const response = await axios.put(`http://localhost:4000/api/wallet/update_wallet/${currentWallet._id}`, { name, address, secretKey, userId }, config);
             if (response.data.message === 'Wallet updated successfully!') {
                 console.log('Wallet updated!');
             } else {
@@ -19,21 +30,21 @@ const LocalWalletModal = ({ onClose, mode = "create", currentWallet = {} }) => {
         } catch (error) {
             console.error('Error:', error);
         }
-    } 
-    else {
-      try {
-        const response = await axios.post('http://localhost:4000/api/wallet/save_wallet', { name, address, secretKey });
-        if (response.data.message === 'Wallet saved successfully!') {
-          console.log('Wallet saved!');
-          onClose();
-        } else {
-          console.error('Error saving wallet.');
+    } else {
+        try {
+            const response = await axios.post('http://localhost:4000/api/wallet/save_wallet', { name, address, secretKey, userId }, config);
+            if (response.data.message === 'Wallet saved successfully!') {
+                console.log('Wallet saved!');
+                onClose();
+            } else {
+                console.error('Error saving wallet.');
+            }
+        } catch (error) {
+            console.error('Error:', error);
         }
-      } catch (error) {
-        console.error('Error:', error);
-      }    }
+    }
     onClose();
-  };
+};
 
   return (
 <div className="modal-container">

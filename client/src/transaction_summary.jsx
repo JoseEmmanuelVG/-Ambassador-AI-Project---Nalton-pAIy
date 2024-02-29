@@ -18,8 +18,16 @@ const TransactionSummary = ({ destination, currency, amount, gas, submitTransact
         return;
       }
 
+      // Obtener el token JWT del almacenamiento local
+      const token = localStorage.getItem('jwtToken');
+
       try {
-        const response = await axios.get(`http://localhost:4000/api/wallet/get_balance_and_transactions/${selectedWallet}`);
+        // Incluir el token en los headers de la solicitud
+        const response = await axios.get(`http://localhost:4000/api/wallet/get_balance_and_transactions/${selectedWallet}`, {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
         if (response.status === 200) {
           setData(response.data);
         } else {
@@ -33,6 +41,7 @@ const TransactionSummary = ({ destination, currency, amount, gas, submitTransact
 
     fetchData();
   }, [selectedWallet]);
+
 
   const balanceInXrp = data ? data.balance : '---'; 
 

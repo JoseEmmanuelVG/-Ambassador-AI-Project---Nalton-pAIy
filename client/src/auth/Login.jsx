@@ -1,13 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-
+import '../styles/LoginStyles.css';
 
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [errorMessage, setErrorMessage] = useState('');
     const navigate = useNavigate();
+
+    useEffect(() => {
+        // Aplica el estilo al body cuando el componente se monta
+        document.body.style.backgroundImage = "url('https://raw.githubusercontent.com/JoseEmmanuelVG/Nalton-pAIy/main/images/BackGround.jpg')";
+        document.body.style.backgroundSize = "cover";
+        document.body.style.backgroundPosition = "center";
+        document.body.style.backgroundRepeat = "no-repeat";
+    
+        // Revierte el estilo cuando el componente se desmonta
+        return () => {
+            document.body.style.background = ""; // Restablece el fondo a un estado predeterminado o vacío
+        };
+    }, []);
+    
 
 
     const handleSubmit = async (e) => {
@@ -18,12 +32,12 @@ function Login() {
             navigate('/transactions');
             if (response.data.token) {
                 localStorage.setItem('jwtToken', response.data.token);
-                localStorage.setItem('jwtToken', response.data.token);
+                localStorage.setItem('userId', response.data.userId); // save user id in local storage
                 console.log("Token stored:", localStorage.getItem('jwtToken'));
             }            
         
         } catch (error) {
-            console.error("Error en el inicio de sesión:", error.response.data.message);
+            console.error("Login error:", error.response.data.message);
             setErrorMessage(error.response.data.message);
             
         }
@@ -36,29 +50,34 @@ function Login() {
     };
 
     return (
-        <div>
-            <h2>Iniciar sesión</h2>
+        <div className="login-container">
+            <h1>NALTON pAIy APP</h1>        
+        <h2>Login</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     type="text"
-                    placeholder="Usuario"
+                    placeholder="User"
                     value={username}
                     onChange={e => setUsername(e.target.value)}
                 />
                 <input
                     type="password"
-                    placeholder="Contraseña"
+                    placeholder="Password"
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                 />
                 {
                     errorMessage && <p style={{ color: 'red' }}>{errorMessage}</p>
                 }
-                <button type="submit">Iniciar sesión</button>
-            </form>
-            <p>¿No tienes una cuenta? <a href="/register">Regístrate</a></p>
+                <button type="submit">Login</button>
+            </form> 
+            <p>Don't have an account? <a href="/register">Register</a></p> 
+            <footer>
+                Empowering seamless financial interactions through Azure AI & cryptocurrencies - starts with XRP- 
+            </footer> 
         </div>
     );
 }
 
 export default Login;
+

@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import './styles/WalletDetailsStyles.css';
 
-
 const WalletDetails = ({ address }) => {
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
@@ -14,8 +13,16 @@ const WalletDetails = ({ address }) => {
                 return;
             }
 
+            // Obtener el token JWT del almacenamiento local
+            const token = localStorage.getItem('jwtToken');
+
             try {
-                const response = await axios.get(`http://localhost:4000/api/wallet/get_balance_and_transactions/${address}`);
+                // Incluir el token en los headers de la solicitud
+                const response = await axios.get(`http://localhost:4000/api/wallet/get_balance_and_transactions/${address}`, {
+                  headers: {
+                    Authorization: `Bearer ${token}`
+                  }
+                });
                 if (response.status === 200) {
                     setData(response.data);
                 } else {

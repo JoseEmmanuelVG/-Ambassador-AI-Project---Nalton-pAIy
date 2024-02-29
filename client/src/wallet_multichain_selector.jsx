@@ -34,16 +34,24 @@ const SelectWallet = () => {
 
   const selectWallet = async (event) => {
     const selectedWallet = localWallets.find(w => w.name === event.target.value);
-    setCurrentWallet(selectedWallet);   
+    setCurrentWallet(selectedWallet);
     if (event.target.value === 'localWallet') {
       setShowModal(true);
-      setCurrentWallet(null); 
+      setCurrentWallet(null);
       return;
     }
     setSelectedWallet(selectedWallet.address);
-
+  
     try {
-      const response = await axios.post('http://localhost:4000/api/wallet/select_wallet', { wallet: selectedWallet.name });
+      // Include the token in the headers
+      const token = localStorage.getItem('jwtToken');
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      };
+  
+      const response = await axios.post('http://localhost:4000/api/wallet/select_wallet', { wallet: selectedWallet.name }, config);
       if (response.data.confirmation === 'ok') {
         setSelectedWallet(response.data.address);
       }
@@ -52,6 +60,7 @@ const SelectWallet = () => {
       console.error(error);
     }
   }
+  
 
   return (
     <div className={`selectWalletContainer ${currentPage}`}>

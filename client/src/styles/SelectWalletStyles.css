@@ -6,7 +6,7 @@
     background: #f3f3f3;
     position: sticky;
     top: 0;
-    background-image: url("https://github.com/bancambios/PaiyApp-Hackaton-Etherfuse/blob/main/Images/BackGround%20Select.gif?raw=true");
+    background-image: url("https://github.com/JoseEmmanuelVG/-Ambassador-AI-Project---Nalton-pAIy/blob/main/images/BackGround%20Select3.gif?raw=true");
     background-size: cover;   
     background-repeat: no-repeat;  
     background-position: center;  
@@ -24,19 +24,19 @@
 }
 
 .selectWalletContainer.default {
-    background-image: url("https://github.com/bancambios/PaiyApp-Hackaton-Etherfuse/blob/main/Images/BackGround%20Select.gif?raw=true");
+    background-image: url("https://github.com/JoseEmmanuelVG/-Ambassador-AI-Project---Nalton-pAIy/blob/main/images/BackGround%20Select.gif?raw=true");
 }
 
 .selectWalletContainer.details {
-    background-image: url("https://github.com/bancambios/PaiyApp-Hackaton-Etherfuse/blob/main/Images/BackGround%20Select2.gif?raw=true");
+    background-image: url("https://github.com/JoseEmmanuelVG/-Ambassador-AI-Project---Nalton-pAIy/blob/main/images/BackGround%20Select2.gif?raw=true");
 }
 
 .selectWalletContainer.transactions {
-    background-image: url("https://github.com/bancambios/PaiyApp-Hackaton-Etherfuse/blob/main/Images/BackGround%20Select.gif?raw=true");
+    background-image: url("https://github.com/JoseEmmanuelVG/-Ambassador-AI-Project---Nalton-pAIy/blob/main/images/BackGround%20Select.gif?raw=true");
 }
 
 .selectWalletContainer.memories {
-    background-image: url("https://github.com/bancambios/PaiyApp-Hackaton-Etherfuse/blob/main/Images/BackGround%20Select3.gif?raw=true");
+    background-image: url("https://github.com/JoseEmmanuelVG/-Ambassador-AI-Project---Nalton-pAIy/blob/main/images/BackGround%20Select3.gif?raw=true");
 }
 
 

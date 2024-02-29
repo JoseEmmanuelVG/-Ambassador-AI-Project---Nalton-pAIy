@@ -31,7 +31,7 @@ async function register  (req, res) {
             expiresIn: '1h'
         });
 
-        res.json({ message: 'Successful login', token });
+        res.json({ message: 'Successful login', token, userId: user._id });
     } catch (error) {
         res.status(500).json({ message: error.message });
     }

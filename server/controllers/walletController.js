@@ -1,19 +1,21 @@
+require('dotenv').config();
 const Wallet = require('../models/nalton_wallets');
 const { encrypt, decrypt } = require('../utils/cryptoUtils');
-const generateImageFromText = require('../utils/generateImage');
 const GeneratedImage = require('../models/generate_image.js');
+const axios = require('axios');
 
 // We define the methods for each route. 
 // The methods are exported to be used in the routes file.
 
 // Create a new wallet
 async function save_wallet (req, res) {
-    const { name, address, secretKey } = req.body;
+    const { name, address, secretKey, userId } = req.body; // add userId to the request body
     const wallet = new Wallet({
       name: name,
       address: address,
-      secretKey: encrypt(secretKey) // Save the encrypted secretKey
-  });
+      secretKey: encrypt(secretKey), // Save the encrypted secretKey
+      user: userId // Add the user id to the wallet
+    });
   try { 
       await wallet.save();
       res.json({ message: 'Wallet saved successfully!' });
@@ -23,15 +25,15 @@ async function save_wallet (req, res) {
 };
 
 // Get all wallets
-async function get_wallets (req, res) {
-
+async function get_wallets(req, res) {
+  const userId = req.userId; // get user id from the request
   try {
-      const wallets = await Wallet.find({});
-      res.json(wallets);
-    } catch (error) {
-      res.status(500).json({ message: 'Error fetching wallets.' });
-    }
-};
+    const wallets = await Wallet.find({ user: userId });
+    res.json(wallets);
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching wallets.' });
+  }
+}
 
 
 // Get wallet details by name (address and secretKey) 
@@ -177,17 +179,61 @@ async function getBalanceAndTransactionsForAddress(req, res) {
 }
 
 
+
+
+
+
+
+
 // Generate image from text
-async function generateImage  (req, res) {
+async function generateImage(req, res) {
+  const { text } = req.body;
+  const apiVersion = '2023-06-01-preview';
+  const apiKey = process.env.AZURE_OAI_KEY;
+  const apiBase = process.env.AZURE_OAI_ENDPOINT;
+
+  if (!apiKey || !apiBase) {
+    return res.status(400).json({ message: "Faltan el endpoint de Azure y/o la clave de suscripción" });
+  }
+
+  const url = `${apiBase}openai/images/generations:submit?api-version=${apiVersion}`;
+  const headers = { "api-key": apiKey, "Content-Type": "application/json" };
+  const body = {
+    prompt: text,
+    n: 1,
+    size: "512x512"
+  };
+
   try {
-      const { text, dalleKey } = req.body;  // Obtener DALL-E key del cuerpo
-      const imageUrl = await generateImageFromText(text, dalleKey);  // Pasarlo como segundo argumento
+    const submission = await axios.post(url, body, { headers });
+    const operationLocation = submission.headers['operation-location'];
+
+    let status = "";
+    let response;
+    while (status !== "succeeded") {
+      await new Promise(resolve => setTimeout(resolve, 3000)); // Esperar 3 segundos
+      response = await axios.get(operationLocation, { headers });
+      status = response.data['status'];
+    }
+
+    if (response.data && response.data.result && response.data.result.data && response.data.result.data.length > 0) {
+      const imageUrl = response.data.result.data[0].url;
       res.json({ imageUrl });
+    } else {
+      throw new Error("La respuesta de Azure DALL·E no contiene imágenes");
+    }
   } catch (error) {
-      console.error("Error in generateImage:", error);
-      res.status(500).json({ message: "Error generating image. Please try again later." });
-  }  
-};
+    console.error("Error al generar la imagen con Azure DALL·E:", error.response ? error.response.data : error);
+    res.status(500).json({ message: "Error al generar la imagen. Inténtalo de nuevo más tarde.", error: error.response ? error.response.data : error });
+  }
+}
+
+
+
+
+
+
+
 
 
 

@@ -17,18 +17,40 @@ const DeleteWalletModal = ({ onClose, currentWallet }) => {
 
     const handleDelete = async (event) => {
         event.preventDefault();
+    
+        // Obtener el token JWT del almacenamiento local
+        const token = localStorage.getItem('jwtToken');
+        if (!token) {
+          console.error('No JWT token found. Make sure you are logged in.');
+          return;
+        }
+    
+        // Configurar los headers para incluir el token JWT
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+            // Axios espera que los datos enviados en la solicitud DELETE estén en la propiedad `data`
+            data: { secretKey },
+        };
+    
         try {
-            const response = await axios.delete(`http://localhost:4000/api/wallet/delete_wallet/${currentWallet.name}`, { data: { secretKey } });
+            const response = await axios.delete(`http://localhost:4000/api/wallet/delete_wallet/${currentWallet.name}`, config);
             if (response.data.message === 'Wallet deleted successfully!') {
                 console.log('Wallet deleted!');
+                alert('Wallet deleted successfully!');
             } else {
                 console.error('Error deleting wallet.');
+                alert('Error deleting wallet.');
             }
         } catch (error) {
             console.error('Error:', error);
+            alert(`Error deleting the wallet: ${error.response?.data?.message || error.message}`);
         }
+    
         onClose();
     };
+    
     return (
 <div className="modal-container">
     <div className="modal-content">

@@ -1,52 +1,74 @@
 .container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-  }
-  
-  .image-card {
-    width: calc(33% - 14px); 
-    background-color: #292424;
-    box-shadow: 0 4px 6px rgba(239, 238, 238, 0.1);
-    border-radius: 10px;
-    overflow: hidden;
-    transition: transform 0.2s;
-    cursor: pointer;
-  }
-  
-  .image-card:hover {
-    transform: scale(1.05);
-  }
-  
-  .image-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 50%;
-  }
-  
-  .image-content {
-    padding: 20px;
-    display: block; 
-  }
-  
-  .image-card:not(.opened) .image-content {
-    display: none; 
-  }
-  
-  
-  .delete-button {
-    background-color: #ff4747;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 8px 12px;
-    cursor: pointer;
-    transition: background-color 0.2s;
-  }
-  
-  .delete-button:hover {
-    background-color: #d63b3b;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+  background-image: url('https://raw.githubusercontent.com/JoseEmmanuelVG/-Ambassador-AI-Project---Nalton-pAIy/main/images/BackGroundMemories.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative; /* Esto es necesario para el posicionamiento del pseudo-elemento */
+  overflow: hidden; /* Para asegurar que el overlay no se extienda fuera del contenedor */
+}
+
+/* Overlay oscurecedor */
+.container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.9); /* Ajusta esta opacidad según lo oscuro que quieras que sea */
+  z-index: 0; /* Coloca el overlay detrás del contenido del contenedor */
+}
+
+/* Asegura que el contenido del contenedor se muestre encima del overlay */
+.container > * {
+  position: relative;
+  z-index: 1;
+}
+
+.image-card {
+  width: calc(33% - 14px);
+  background-color: #292424;
+  box-shadow: 0 4px 6px rgba(239, 238, 238, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.2s;
+  cursor: pointer;
+}
+
+.image-card:hover {
+  transform: scale(1.05);
+}
+
+.image-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.image-content {
+  padding: 20px;
+  display: block;
+}
+
+.image-card:not(.opened) .image-content {
+  display: none;
+}
+
+.delete-button {
+  background-color: #ff4747;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.delete-button:hover {
+  background-color: #d63b3b;
+}

@@ -8,11 +8,23 @@ const SavedImagesPage = () => {
     useEffect(() => {
         const fetchImagesData = async () => {
             try {
-                const response = await axios.get('http://localhost:4000/api/wallet/get_all_image_urls'); 
-                setImagesData(response.data);  
-            } catch (error) {
+                const token = localStorage.getItem('jwtToken'); // Obtener el token del almacenamiento local
+                if (!token) {
+                  console.error('No se encontró el token JWT. Asegúrate de estar autenticado.');
+                  return;
+                }
+                
+                const config = {
+                  headers: {
+                    Authorization: `Bearer ${token}`, // Incluir el token en el header Authorization
+                  },
+                };
+            
+                const response = await axios.get('http://localhost:4000/api/wallet/get_all_image_urls', config);
+                setImagesData(response.data);
+              } catch (error) {
                 console.error('Error fetching saved images:', error);
-            }
+              }
         };
     
         fetchImagesData();
@@ -21,20 +33,34 @@ const SavedImagesPage = () => {
     const deleteImageDetails = async (imageUrl, hash, description) => {
         const confirmation = prompt('Ingrese el hash, url, o descripción para confirmar la eliminación:');
         if (!confirmation) return;
-
+    
         // Check confirmation
         if (confirmation !== imageUrl && confirmation !== hash && confirmation !== description) {
             alert('La confirmación no coincide. Eliminación cancelada.');
             return;
         }
-
+    
+        // Obtener el token JWT del almacenamiento local
+        const token = localStorage.getItem('jwtToken');
+        if (!token) {
+          alert('No estás autenticado. Por favor, inicia sesión.');
+          return;
+        }
+    
+        // Configuración de Axios con el token JWT
+        const config = {
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+            // Aquí especificamos el cuerpo de la solicitud para Axios en DELETE
+            data: { imageUrl, hash, description }
+        };
+    
         try {
-            const response = await axios.delete('http://localhost:4000/api/wallet/delete_saved_image', {
-                data: { imageUrl, hash, description }
-            });
-
+            const response = await axios.delete('http://localhost:4000/api/wallet/delete_saved_image', config);
+    
             alert(response.data.message);
-
+    
             // Removing the image from the state
             setImagesData(prevImages => prevImages.filter(img => img.imageUrl !== imageUrl));
         } catch (error) {
@@ -42,6 +68,7 @@ const SavedImagesPage = () => {
             alert('Error eliminando los datos de la imagen.');
         }
     };
+    
 
 
 
