@@ -1,3 +1,4 @@
+
 # -Ambassador-AI-Project---Nalton-pAIy
 
 The proposal is an innovative application designed to facilitate user interaction with financial transactions, using Ripple's XRPL (XRP Ledger Testnet) as a demonstration platform. This advanced system allows users to execute transactions simply and directly, using text or voice commands.
@@ -19,26 +20,25 @@ The implementation of this application on Ripple's XRPL Testnet shows its viabil
 This technological solution not only seeks to simplify financial transactions, but also aims to integrate them more meaningfully into people's daily lives, thus promoting a deeper and more educational relationship with personal finance.
 
 
-**NALTON_WALLET (Web Application NOW)**
-Utilizes technologies like XRPL (XRP Ledger), Smart Contracts, XRPL APIs, OpenAI APIs, and more.
-Includes components such as transaction summary, wallet browser (using basic AI for transaction detection), local wallet modals, and more.
-Backed by a Node.js backend with MongoDB for storing encrypted XRPL testnet account information.
-Implements features for saving addresses and keys, making transactions through text input, viewing transaction history, and generating images for transactions. Challenges we ran into
-Demo Video (without User register):
-https://vimeo.com/856631154?share=copy
-
-
-
-
-
 # **Azure Implementation**
-We plan to implement wallet connectivity for XRPL and Metamask devnet, as well as different wallet connect wallets to make the application a multichain site. In order to increase the security and not need to save the sensitivity aaccount information, or use a better ways to save it The future of Nalton Paiy involves further refining the application, expanding its compatibility with different wallet connectors, and exploring integration with the Ripple CBDC Innovate Payment Service and international banking networks. The team also plans to enhance security, improve user experience, and potentially migrate to a more comprehensive cloud solution like Azure Cloud:
+Plan to implement wallet connectivity for XRPL and Metamask devnet, as well as different wallet connect wallets to make the application a multichain site. In order to increase the security and not need to save the sensitivity aaccount information, or use a better ways to save it The future of Nalton Paiy involves further refining the application, expanding its compatibility with different wallet connectors, and exploring integration with the Ripple CBDC Innovate Payment Service and international banking networks. The team also plans to enhance security, improve user experience, and potentially migrate to a more comprehensive cloud solution like Azure Cloud:
 
-- Use key vault to save the secrets keys
 - Use Azure Cosmos Db to save the images and the same service or another focus to save the accounts if it is necesary
 Azure Cosmos DB for MongoDB: https://learn.microsoft.com/es-mx/training/paths/azure-cosmos-db-api-for-mongodb/
 - Use the Azure open AI services to get a full Azure Cloud connection Apis
 Developing generative artificial intelligence solutions with Azure OpenAI Service: https://learn.microsoft.com/es-mx/training/paths/develop-ai-solutions-azure-openai/
+
+
+
+https://github.com/JoseEmmanuelVG/-Ambassador-AI-Project---Nalton-pAIy/assets/89156254/d354648d-a816-492e-b5a5-60387e2b2b46
+
+
+
+## Working to implement:
+- Expand the capabilities of our application to include audio and text reception, using Azure OpenAI Chat, which will enrich the user's interaction with the search engine and image generator.
+
+### Future work:
+- Use key vault to save the secrets keys
 
 
 
