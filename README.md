@@ -32,7 +32,7 @@ Developing generative artificial intelligence solutions with Azure OpenAI Servic
 
 https://github.com/JoseEmmanuelVG/-Ambassador-AI-Project---Nalton-pAIy/assets/89156254/d354648d-a816-492e-b5a5-60387e2b2b46
 
-
+***Canva LINK with subtitles: https://www.canva.com/design/DAF99P6Yz-s/9J4TOAmZCFl0qS8d7hiSHA/watch?utm_content=DAF99P6Yz-s&utm_campaign=designshare&utm_medium=link&utm_source=editor***
 
 ## Working to implement:
 - Expand the capabilities of our application to include audio and text reception, using Azure OpenAI Chat, which will enrich the user's interaction with the search engine and image generator.
