@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap');
+
+.login-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('https://raw.githubusercontent.com/JoseEmmanuelVG/-Ambassador-AI-Project---Nalton-pAIy/main/images/BackGround.jpg?token=GHSAT0AAAAAACI6B2OOWQESAFTC23S4MB7CZO5KZXQ'); /* Imagen de fondo aplicada aquí */
+    background-size: cover; 
+    background-position: center; 
+    background-repeat: no-repeat; 
+    position: relative; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden; 
+}
+
+.login-container h1 {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 4rem;
+    background: linear-gradient(to right, #007bff, #881798, #ff7600, #007bff);
+    background-size: 200% auto; /* Hace que el gradiente sea más ancho que el elemento */
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: rainbow 5s linear infinite; /* Ajusta la duración según necesites */
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+@keyframes rainbow {
+    to {
+        background-position: 200% center; /* Mueve el gradiente para crear el efecto */
+    }
+}
+
+.login-container footer {
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    color: #ffffff;
+    margin-top: 20px;
+    margin-bottom: 10px; 
+    font-size: 1rem;
+    opacity: 0.8;
+    z-index: 1;
+    transition: opacity 0.3s ease; 
+}
+
+.login-container a {
+    transition: color 0.3s ease;
+}
+
+.login-container a:hover {
+    color: #ccd6f6; 
+}
+
+.login-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); 
+    z-index: 0; 
+}
+
+.login-container form {
+    background: rgba(0, 0, 0, 0.6); 
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgb(221, 212, 212);
+    max-width: 400px;
+    width: 100%;
+    position: relative; 
+    z-index: 1; 
+}
+
+
+.login-container h2 {
+    text-align: center;
+    color: #ffffff;
+    margin-bottom: 20px;
+    z-index: 1; 
+
+}
+
+.login-container input[type="text"], .login-container input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.login-container button {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: #0056b3;
+}
+
+.login-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.login-container a:hover {
+    text-decoration: underline;
+}
+
+.login-container p {
+    text-align: center;
+    color: #7f92a5;
+    z-index: 2; 
+}
+
+@media (max-width: 768px) {
+    .login-container form {
+        padding: 20px;
+        max-width: 90%;
+    }
+}

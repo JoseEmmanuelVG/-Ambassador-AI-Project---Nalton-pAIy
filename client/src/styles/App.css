@@ -1,0 +1,23 @@
+.Close {
+    align-items: center;
+    position: sticky;
+    z-index: 2;
+    padding: 5px 15px;
+    background: #000000;
+    color: #f2efef;
+    border-radius: 5px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    gap: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+    margin: 0 auto;
+
+}

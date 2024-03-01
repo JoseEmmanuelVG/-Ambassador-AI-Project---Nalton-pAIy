@@ -1,0 +1,80 @@
+.register-container {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-image: url('https://raw.githubusercontent.com/JoseEmmanuelVG/-Ambassador-AI-Project---Nalton-pAIy/main/images/BackGroundRegister.jpg?token=GHSAT0AAAAAACI6B2OP65VXZAJMYKZDT6ZQZO5K2MA');     background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+}
+
+.register-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.7); 
+    z-index: 0; 
+}
+
+.register-container form {
+    background: rgba(0, 0, 0, 0.6); 
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgb(221, 212, 212);
+    max-width: 400px;
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.register-container h2 {
+    text-align: center;
+    color: #fff2f2;
+    margin-bottom: 20px;
+    z-index: 1;
+}
+
+.register-container input[type="text"], .register-container input[type="password"] {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+.register-container button {
+    width: 100%;
+    padding: 15px;
+    margin: 10px 0;
+    border: none;
+    border-radius: 5px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.register-container button:hover {
+    background-color: #0056b3;
+}
+
+.register-container a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.register-container a:hover {
+    text-decoration: underline;
+}
+
+.register-container p {
+    text-align: center;
+}
